@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INST377 - Lab 4</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #add8e6; /* Light blue background */
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+        }
+        .section {
+            background-color: purple;
+            border-radius: 10px;
+            padding: 15px;
+            width: 300px;
+            color: white;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        input {
+            border: none;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        button {
+            padding: 5px 10px;
+            background-color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1><strong>INST377 - Lab 4</strong></h1>
+    <div class="container">
+        <!-- Alert Me Section -->
+        <div class="section">
+            <label for="nameInput">Name:</label>
+            <input type="text" id="nameInput" required>
+            <button onclick="showAlert()">Alert Me!</button>
+        </div>
+        <!-- Change Color Section -->
+        <div class="section" style="justify-content: center;">
+            <button onclick="changeColor()">Change Color</button>
+        </div>
+        <!-- Text Tester Section -->
+        <div class="section">
+            <label for="textInput">Text Tester:</label>
+            <input type="text" id="textInput">
+            <button onclick="validateText()">Validate Text</button>
+        </div>
+        <!-- Add Text Section -->
+        <div class="section" style="justify-content: center;">
+            <button onclick="addText()">Add Text</button>
+        </div>
+    </div>
+    <script>
+        function showAlert() {
+            let name = document.getElementById("nameInput").value;
+            if (name.trim() === "") {
+                alert("Please enter a name!");
+            } else {
+                alert("Hi " + name + "!");
+            }
+        }
+        
+        let isBlue = true;
+        function changeColor() {
+            document.body.style.backgroundColor = isBlue ? "green" : "blue";
+            isBlue = !isBlue;
+        }
+        
+        function validateText() {
+            let text = document.getElementById("textInput").value;
+            let validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+            if (validation.test(text)) {
+                alert("Special characters detected!");
+            } else {
+                alert("Text is valid!");
+            }
+        }
+        
+        function addText() {
+            let heading = document.querySelector("h1");
+            heading.innerText += " Add Text";
+        }
+    </script>
+</body>
+</html>
